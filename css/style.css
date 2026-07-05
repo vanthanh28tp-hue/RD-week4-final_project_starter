@@ -1,0 +1,158 @@
+/* ============================
+   RESET / BASE (Mobile First)
+   ============================ */
+* {
+  box-sizing: border-box;
+}
+ 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #dedede;
+  color: #000;
+}
+ 
+/* Smooth scroll for the "Jump to top" link,
+   but respect users who asked for less motion */
+html {
+  scroll-behavior: smooth;
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+ 
+header {
+  text-align: center;
+  padding: 10px;
+}
+ 
+h1 {
+  font-size: 28px;
+  margin: 0;
+}
+ 
+a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+ 
+p {
+  font-size: 18px;
+  text-align: center;
+  padding: 0 10px;
+}
+ 
+/* Grid container: display is declared ONCE here.
+   Media queries below only change grid-template-columns,
+   they never repeat "display: grid". */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+ 
+figure {
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
+ 
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+ 
+figcaption {
+  margin-top: 8px;
+  font-size: 16px;
+}
+ 
+footer {
+  text-align: center;
+  padding: 15px;
+}
+ 
+/* ============================
+   MEDIA QUERY 1 (smallest breakpoint first)
+   Small tablets / large phones: 2 columns
+   ============================ */
+@media (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+/* ============================
+   MEDIA QUERY 2
+   Tablets: 3 columns
+   ============================ */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  h1 {
+    font-size: 32px;
+  }
+}
+ 
+/* ============================
+   MEDIA QUERY 3
+   Small desktops: 4 columns, wider text
+   ============================ */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+ 
+  p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 10px auto;
+  }
+}
+ 
+/* ============================
+   MEDIA QUERY 4 (largest breakpoint last)
+   Large desktops: full 9-color row option
+   ============================ */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+ 
+/* ============================
+   DARK MODE (fixes contrast error
+   flagged by validator/peer)
+   ============================ */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+ 
+  a {
+    color: #ffffff;
+  }
+ 
+  figure {
+    border-color: #555;
+    background-color: #1e1e1e;
+  }
+}
